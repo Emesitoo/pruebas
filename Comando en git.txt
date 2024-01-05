@@ -1,0 +1,161 @@
+Comandos basicos de CMD:
+	dir->te da el listado de los archivos dentro de carpetas
+	clear-> limpiar terminal
+	list-> listar todas las carpetas
+	cd -> manejar entre carpetas
+	cd .. -> me da un salto para atras / me saca de la carpeta
+	ls -> listado de todas las carpetas
+	ls -a -> mostrar todo incluso las ocultas
+	pwd -> para saber que directorio estoy
+	code . -> abre el editor de codigo
+	cat archivo2.txt-> mostrar contenido del archivo
+	echo mensaje > nombre del archivo -> como con el php para guardar un texto en el archivo pero te elimina todo el comentario anterior lo reemplaza pe
+	Crear una carpeta:
+		mkdir + nombre -> crear una carpeta
+
+git:
+	init (al inicio debes de hacer esto):
+		git init -> crear repositorio vacio
+		IMPORTANTE (tienes que configurar esto para adaptarlo a otros SO):
+			caracteres especiales o espaciados(saltos de lineas)
+			cr lr => True(windows) |input (mac o linux)
+			git config --global core.autocrlf true o input
+	
+	configuracion Inicial-Comunes(config):
+		a veces hay que como registrarse
+			git config --global user.email "you@examenple.com"
+			git config --global user.name "nombre" o tambien git config --local user.name "nombre"
+
+		git config --global core.editor "code --wait" -> espera el editor que estamos abriendo
+		git config --global -e -> lo abre
+		git config -h -> para ver lo que se puede hacer con config es un "manual"
+		git config --list -> para ver si se hizo lo anterior
+		git config --list --local-> para ver la configuracion que tenemos en local
+		git config --list --global-> para ver la configuracion que tenemos en global
+		git config user.name-> crea el usuario 
+	
+	commit:
+		git commit -am "texto" -> necesitas ser usuario maestro 
+		git commit -m "texto"-> fase commit
+		git commit -a -m "texto"-> otro commit
+		git commit-> etapa commit (elimina stage)
+	
+	status:
+		git status -> indica los archivos añadidos (necesitas un commit) ademas sirve para ver el estado de las ramas
+		git status -s -> un mejor que git status
+	
+	add:
+		git add . -> añadir todos los archivos al control de versiones
+		git add + nombre -> lo mismo que arriba
+		git add-> seleccionar archivos a etapa stage
+		git add --all -> añade al stage de add a todos los archivos
+	
+	log:
+		git log -> para ver que se hizo hora,fecha y nombre
+		git log ->nombre de todo (historial)
+		git log --oneline ->nombre de todo (historial)
+	
+	checkout:
+		git checkout + etiqueta 
+		git chekout (nombre de la rama) -> para entrar en la rama / tienes para salirte de otra rama
+		git checkout -b ramab->crear una rama (te la cambia automaticamente)
+
+	branch:
+		git branch -> verifica en que rama nos encontramos
+		git branch -l -> lo mismo que la de arriba
+		git branch + nombre de la rama -> crear otra rama pero no te traslada a ese sitio
+		git branch -d desarrollo -> eliminar una rama
+		git branch -m main -> crea una rama
+
+	merge:
+		git merge (rama que se creo)-> traernos cambios de rama b a la rama principal
+
+	etiqueta:
+		git tag -a "texto"+ el identificador -> crea una etiqueta para la cabezera
+
+	reset:
+		git reset --soft HEAD~1 -> posicion para atras como ctrl + z
+		git reset --hard-> da un paso atras
+		
+	diff:
+		git diff-> muestra la diferencia que paso alli, para hacer esto necesitas hacer un cambio
+		git diff --staged -> cambios en la etapa 
+
+	restore:
+		git restore --staged nombre del archivo ->para darle una etapa atras
+		git restore nombre del archivo ->este si es para restaurarlo
+		
+	revert:
+		git revert + etiqueta del commit -> sexto sentido de la orientacion, revierte el commit
+	
+	rm:
+		rm + nombre -> eliminar archivo
+			OJO:
+				cuando eliminamos un archivo tambiendebe pasar por 
+				las etapas
+		git rm + nombre->tambien sirve para eliminar solo que no pasa por las etapas
+
+	mv:
+		mv nombre delarchivo + nombre nuevo -> para renombrar
+		git mv nombre delarchivo + nombre nuevo -> para renombrar pero masfuerte
+
+	stash:
+		git stash -> pausar
+		git stash pop -> elimina el stash el 1ero en orden
+		git stash apply -> volver
+		git stash list -> listar los stash
+		git stash clear -> eliminar todos los stash
+	
+	graph:
+		git log --oneline --graph --all -> ver de una forma grafica las ramas construidas
+	
+	cherry:
+		git cherry -pick (identificador) -> funciona para traer un commit de otra rama
+	
+	help:
+		git help-> muestra algunos comandos
+	
+	remote:
+		git remote -> si hay un servidor conectado
+		git remote -v -> lo mismo
+		git remote add nombre del repositorio tal cual + (enlace) -> aqui enlace del servidor con el nombre de alla del repositorio
+		
+	clone:
+		git clone (enlace) -> clonar repositorio tuyo o de cualquiera
+	
+	fetch:
+		git fetch pruebas main -> si por ejemplo tenemos archivos del repositorio nos lo trae a la carpeta
+
+	push:
+		git push pruebas main -> envia al repositorio
+		git push -u origin (rama)
+	
+	pull:
+		git pull pruebas main -> descargar archivos del repositorio
+
+ANOTACIONES:
+
+cuando modificamos un archivo
+se tiene que pasar a todo las etapas 
+en commit se especifica con el editor que se a hecho
+
+ETAPAS EN GIT:
+	computador -> stage-> commit -> server
+
+las ramas son puntos de guardados practicamente
+puedes volver a la rama inicial,y los cambios soncambiados en el punto de
+partida. 
+
+crear archivo sin extension .gitignore para ignorar algunos archivos
+de nuestro proyecto y agregar el nombre de lo que queremos ignoras dentro
+de ese mismo archivo, tienes que pasarlo al add
+
+Dentro de ese archivo se puede poner para dejarlo pasar osea los archivos colocarlos alli:
+/nombre de carpeta
+.lib/
+carpeta/
+*.temp
+pass.*
+clave.txt
+
+git se puede abrir en la terminal de VSC
